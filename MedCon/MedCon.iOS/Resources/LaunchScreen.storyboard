@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="X5k-f2-b5h">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="gAE-YM-kbH">
+            <objects>
+                <viewController id="X5k-f2-b5h" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Y8P-hJ-Z43"/>
+                        <viewControllerLayoutGuide type="bottom" id="9ZL-r4-8FZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleAspectFit" id="yd7-JS-zBw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="220" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="splash_main.png" clearsContextBeforeDrawing="NO" preservesSuperviewLayoutMargins="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES">
+                                <rect key="frame" x="0.0" y="2" width="375" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" customColorSpace="sRGB" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                        <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XAI-xm-WK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="349" y="339"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Icon-60.png" width="60" height="60"/>
+        <image name="launch-logo.ico" width="120" height="120"/>
+        <image name="afternoon.png" width="96" height="96"/>
+        <image name="afternoon_black.png" width="96" height="96"/>
+        <image name="Back.png" width="96" height="96"/>
+        <image name="background.png" width="384" height="682"/>
+        <image name="barcode.png" width="32" height="32"/>
+        <image name="bedtime.png" width="96" height="96"/>
+        <image name="bedtime_black.png" width="96" height="96"/>
+        <image name="bg_license.png" width="96" height="96"/>
+        <image name="calendar.png" width="72" height="72"/>
+        <image name="calendar_left_arrow.png" width="24" height="24"/>
+        <image name="calendar_right_arrow.png" width="24" height="24"/>
+        <image name="capsule.png" width="96" height="96"/>
+        <image name="Checked.png" width="24" height="24"/>
+        <image name="dashboard.png" width="72" height="72"/>
+        <image name="Default-568h.png" width="320" height="568"/>
+        <image name="Default-Portrait.png" width="768" height="1004"/>
+        <image name="Default.png" width="320" height="480"/>
+        <image name="details.png" width="96" height="96"/>
+        <image name="downarrow.png" width="32" height="32"/>
+        <image name="downarrow2.png" width="32" height="32"/>
+        <image name="dropdown.png" width="96" height="96"/>
+        <image name="edit.png" width="1024" height="1024"/>
+        <image name="evening.png" width="96" height="96"/>
+        <image name="evening_black.png" width="96" height="96"/>
+        <image name="history.png" width="72" height="72"/>
+        <image name="ic_launcher_round.png" width="72" height="72"/>
+        <image name="Icon-76.png" width="76" height="76"/>
+        <image name="Icon-Small-40.png" width="40" height="40"/>
+        <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="icon.png" width="72" height="72"/>
+        <image name="logout.png" width="72" height="72"/>
+        <image name="menu.png" width="96" height="96"/>
+        <image name="missed.png" width="1024" height="1024"/>
+        <image name="morning.png" width="96" height="96"/>
+        <image name="morning_black.png" width="96" height="96"/>
+        <image name="myprofile.png" width="72" height="72"/>
+        <image name="notification.png" width="96" height="96"/>
+        <image name="ok.png" width="96" height="96"/>
+        <image name="ontime.png" width="96" height="96"/>
+        <image name="overdose.png" width="96" height="96"/>
+        <image name="Profile.jpg" width="1920" height="1200"/>
+        <image name="scan_new_container.png" width="72" height="72"/>
+        <image name="settings.png" width="32" height="32"/>
+        <image name="Splash_Icon.png" width="360" height="550"/>
+        <image name="switch_off.png" width="1024" height="1024"/>
+        <image name="switch_on.png" width="1024" height="1024"/>
+        <image name="Uncheck.png" width="24" height="24"/>
+        <image name="uparrow2.png" width="32" height="32"/>
+        <image name="afternoon_white.png" width="72" height="72"/>
+        <image name="bedtime_white.png" width="72" height="72"/>
+        <image name="bg_img_blue.png" width="720" height="1280"/>
+        <image name="camera.png" width="72" height="72"/>
+        <image name="close.png" width="24" height="24"/>
+        <image name="dosetaken.png" width="72" height="72"/>
+        <image name="downarrow_white.png" width="1024" height="1024"/>
+        <image name="downarrow1.png" width="24" height="24"/>
+        <image name="evening_white.png" width="72" height="72"/>
+        <image name="gallery.png" width="72" height="72"/>
+        <image name="left_arrow.png" width="32" height="32"/>
+        <image name="morning_white.png" width="72" height="72"/>
+        <image name="my_medication.png" width="72" height="72"/>
+        <image name="powder.png" width="96" height="96"/>
+        <image name="right_arrow.png" width="32" height="32"/>
+        <image name="save.png" width="50" height="50"/>
+        <image name="splash_main.png" width="360" height="640"/>
+        <image name="stop.png" width="128" height="128"/>
+        <image name="trash.png" width="96" height="96"/>
+        <image name="uparrow.png" width="32" height="32"/>
+    </resources>
+</document>

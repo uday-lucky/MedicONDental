@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             x:Class="MedCon.Views.HistoryCalendarPopup" CloseWhenBackgroundIsClicked="False">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation PositionIn="Center"
+                                   PositionOut="Center"
+                                   ScaleIn="1.2"
+                                   ScaleOut="0.8"
+                                   DurationIn="400"
+                                   DurationOut="300"
+                                   EasingIn="SinOut"
+                                   EasingOut="SinIn"
+                                   HasBackgroundAnimation="True" />
+    </pages:PopupPage.Animation>
+    <Grid VerticalOptions="Center"
+          HorizontalOptions="Fill"
+          Padding="20, 20, 20, 20" RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />            
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="1"
+                     Grid.Column="0"
+                     BackgroundColor="#58bcf5"
+                     HorizontalOptions="Fill" />
+        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HorizontalOptions="Center" HeightRequest="70"
+               WidthRequest="70"
+               Source="{Binding DoseTimeImage}" />
+        <Label Grid.Row="2"
+               Grid.Column="0"
+               HorizontalOptions="Fill"
+               HorizontalTextAlignment="Center"
+               Text="{Binding Data.ContainerNum}"
+               TextColor="White"
+               BackgroundColor="#58bcf5"
+               VerticalTextAlignment="Start"
+               FontSize="17"
+               Style="{StaticResource LabelStyle}">
+            <Label.FontFamily>                
+                <OnPlatform x:Key="RobotoBold"
+                            x:TypeArguments="x:String"
+                            iOS="Roboto-Bold"
+                            Android="Roboto-Bold.ttf#Roboto-Bold" />
+            </Label.FontFamily>
+        </Label>
+        <StackLayout Grid.Row="3" Grid.Column="0" BackgroundColor="White">
+            <StackLayout Margin="10">
+                <Label Text="{Binding DoseTakenTime}"
+                       Style="{StaticResource LabelStyle}"
+                       HorizontalTextAlignment="Start" FontSize="17">
+                    <Label.FontFamily>
+                        <OnPlatform x:Key="RobotoBold"
+                                    x:TypeArguments="x:String"
+                                    iOS="Roboto-Bold"
+                                    Android="Roboto-Bold.ttf#Roboto-Bold" />
+                    </Label.FontFamily>
+                    
+                </Label>
+            <Label HeightRequest="1"
+                   BackgroundColor="Silver"
+                   HorizontalOptions="Fill" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           HorizontalTextAlignment="Start"
+                           Text="DOSE"
+                           FontSize="17"
+                           Style="{StaticResource LabelStyle}">
+                        <Label.FontFamily>
+                            <OnPlatform x:Key="RobotoBold"
+                                        x:TypeArguments="x:String"
+                                        iOS="Roboto-Bold"
+                                        Android="Roboto-Bold.ttf#Roboto-Bold" />
+                        </Label.FontFamily>
+                    </Label>
+                    <Label Grid.Row="1" Grid.Column="0" Text="Number"
+                           Style="{StaticResource LabelStyle}"
+                           HorizontalTextAlignment="Start" />
+                    <Label Grid.Row="1"
+                           Grid.Column="1"
+                           Text="{Binding Number}"
+                           Style="{StaticResource LabelStyle}"
+                           HorizontalTextAlignment="Start"
+                           TextColor="#494a4c">
+                        <Label.FontFamily>
+                            <OnPlatform x:Key="RobotoLightItalic"
+                                        x:TypeArguments="x:String"
+                                        iOS="RobotoCondensed-Regular"
+                                        Android="RobotoCondensed-Regular.ttf#RobotoCondensed-Regular" />
+                        </Label.FontFamily>
+                    </Label>
+                    <Label Grid.Row="2"
+                           Grid.Column="0"
+                           Text="Strength"
+                           Style="{StaticResource LabelStyle}"
+                           HorizontalTextAlignment="Start" />
+                    <Label Grid.Row="2"
+                           Grid.Column="1"
+                           Text="{Binding Str}"
+                           Style="{StaticResource LabelStyle}"
+                           HorizontalTextAlignment="Start"
+                           TextColor="#494a4c">
+                        <Label.FontFamily>
+                            <OnPlatform x:Key="RobotoLightItalic"
+                                        x:TypeArguments="x:String"
+                                        iOS="RobotoCondensed-Regular"
+                                        Android="RobotoCondensed-Regular.ttf#RobotoCondensed-Regular" />
+                        </Label.FontFamily>
+                    </Label>
+                    <Label Grid.Row="3"
+                           Grid.Column="0"
+                           Text="Total"
+                           Style="{StaticResource LabelStyle}"
+                           HorizontalTextAlignment="Start" />
+                    <Label Grid.Row="3"
+                           Grid.Column="1"
+                           Text="{Binding Total,, StringFormat='{0} MG'}"
+                           Style="{StaticResource LabelStyle}"
+                           HorizontalTextAlignment="Start"
+                           TextColor="#494a4c">
+                        <Label.FontFamily>
+                            <OnPlatform x:Key="RobotoLightItalic"
+                                        x:TypeArguments="x:String"
+                                        iOS="RobotoCondensed-Regular"
+                                        Android="RobotoCondensed-Regular.ttf#RobotoCondensed-Regular" />
+                        </Label.FontFamily>
+                    </Label>
+                    <Label Grid.Row="4"
+                           Grid.Column="0"
+                           Text="Type"
+                           Style="{StaticResource LabelStyle}"
+                           HorizontalTextAlignment="Start" />
+                    <Label Grid.Row="4"
+                           Grid.Column="1"
+                           Text="{Binding Type}"
+                           Style="{StaticResource LabelStyle}"
+                           HorizontalTextAlignment="Start"
+                           TextColor="#494a4c">
+                        <Label.FontFamily>
+                            <OnPlatform x:Key="RobotoLightItalic"
+                                        x:TypeArguments="x:String"
+                                        iOS="RobotoCondensed-Regular"
+                                        Android="RobotoCondensed-Regular.ttf#RobotoCondensed-Regular" />
+                        </Label.FontFamily>
+                    </Label>
+                    <Label Grid.Row="5"
+                           Grid.Column="0"
+                           Text="Window"
+                           Style="{StaticResource LabelStyle}"
+                           HorizontalTextAlignment="Start" />
+                    <Label Grid.Row="5"
+                           Grid.Column="1"
+                           Text="{Binding Window}"
+                           Style="{StaticResource LabelStyle}"
+                           HorizontalTextAlignment="Start"
+                           TextColor="#494a4c">
+                        <Label.FontFamily>
+                            <OnPlatform x:Key="RobotoLightItalic"
+                                        x:TypeArguments="x:String"
+                                        iOS="RobotoCondensed-Regular"
+                                        Android="RobotoCondensed-Regular.ttf#RobotoCondensed-Regular" />
+                        </Label.FontFamily>
+                    </Label>
+                    <Label Grid.Row="6"
+                           Grid.Column="0"
+                           Text="Entry"
+                           Style="{StaticResource LabelStyle}"
+                           HorizontalTextAlignment="Start" />
+                    <Label Grid.Row="6"
+                           Grid.Column="1"
+                           Text="{Binding ScanType}"
+                           Style="{StaticResource LabelStyle}"
+                           HorizontalTextAlignment="Start"
+                           TextColor="#494a4c">
+                        <Label.FontFamily>
+                            <OnPlatform x:Key="RobotoLightItalic"
+                                        x:TypeArguments="x:String"
+                                        iOS="RobotoCondensed-Regular"
+                                        Android="RobotoCondensed-Regular.ttf#RobotoCondensed-Regular" />
+                        </Label.FontFamily>
+                    </Label>
+                </Grid>
+                <Label HeightRequest="1"
+                       BackgroundColor="Silver"
+                       HorizontalOptions="Fill" />
+                <Frame CornerRadius="5"
+                       HasShadow="False"
+                       Padding="10"
+                       BackgroundColor="#2ab999"
+                       HorizontalOptions="Fill" Margin="15,15,15,5" HeightRequest="30">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <Label Text="Close"
+                           Style="{StaticResource LabelStyle}"
+                           FontSize="16"
+                           TextColor="White"
+                           HorizontalTextAlignment="Center" />
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+</pages:PopupPage>

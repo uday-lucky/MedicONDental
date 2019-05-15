@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<slideover:MenuContainerPage xmlns="http://xamarin.com/schemas/2014/forms"
+                             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                             xmlns:slideover="clr-namespace:SlideOverKit;assembly=SlideOverKit"
+                             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+                             xmlns:controls="clr-namespace:MedCon.CustomControls"
+                             ios:Page.UseSafeArea="true"
+                             x:Class="MedCon.Views.CustomPageTemplate"
+                             BackgroundColor="{StaticResource PageColor}">
+  <slideover:MenuContainerPage.Resources>
+            <ResourceDictionary>
+            <Color x:Key="HeaderColor">
+                #5C6BC0
+            </Color>
+            <Color x:Key="ControlsColor">
+                #1b2e68
+            </Color>
+            <Color x:Key="WhiteColor">
+                #ffffff
+            </Color>
+            <Color x:Key="BlackColor">
+                #000000
+            </Color>
+            <Color x:Key="PageColor">
+                #e8ebf6
+            </Color>
+            <Color x:Key="MorningColor">
+                #ffeb3b
+            </Color>
+            <Color x:Key="AfternoonColor">
+                #03a9f4
+            </Color>
+            <Color x:Key="EveningColor">
+                #ff9800
+            </Color>
+            <Color x:Key="BedtimeColor">
+                #0277bd
+            </Color>
+            <!--Fonts-->
+            <OnPlatform x:Key="RobotoMedium"
+                        x:TypeArguments="x:String"
+                        iOS="Roboto-Medium"
+                        Android="Roboto-Medium.ttf#Roboto-Medium" />
+            <OnPlatform x:Key="RobotoLightItalic"
+                        x:TypeArguments="x:String"
+                        iOS="RobotoCondensed-LightItalic"
+                        Android="RobotoCondensed-LightItalic.ttf#RobotoCondensed-LightItalic" />
+            <OnPlatform x:Key="RobotoBold"
+                        x:TypeArguments="x:String"
+                        iOS="Roboto-Bold"
+                        Android="Roboto-Bold.ttf#Roboto-Bold" />
+
+            <OnPlatform x:Key="LargerSize"
+                        x:TypeArguments="x:Double"
+                        iOS="18"
+                        Android="20" />
+            <OnPlatform x:Key="HeaderHeight"
+                        x:TypeArguments="x:Double"
+                        iOS="30"
+                        Android="30" />
+
+            <Style x:Key="FrameStyle"
+                   TargetType="Frame">
+                <Setter Property="Padding"
+                        Value="10,2,10,2" />
+                <Setter Property="CornerRadius"
+                        Value="4" />
+                <Setter Property="HasShadow"
+                        Value="False" />
+            </Style>
+            <Style x:Key="EntryStyle"
+                   TargetType="Entry">
+                <Setter Property="FontSize"
+                        Value="14" />
+                <Setter Property="HeightRequest">
+                    <OnPlatform x:TypeArguments="x:Double"
+                                iOS="40" 
+                                Android="40"/>
+                </Setter>                        
+                <Setter Property="FontSize"
+                        Value="14" />
+                <Setter Property="PlaceholderColor"
+                        Value="{StaticResource BlackColor}" />
+                <Setter Property="FontFamily"
+                        Value="RobotoCondensed-Regular.ttf#RobotoCondensed-Regular" />
+            </Style>
+            <Style x:Key="LabelStyle"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="14" />
+                <Setter Property="TextColor"
+                        Value="Black" />
+                <Setter Property="VerticalTextAlignment"
+                        Value="Center" />
+                <Setter Property="HorizontalTextAlignment"
+                        Value="Start" />
+                <Setter Property="FontFamily"
+                        Value="RobotoCondensed-Regular.ttf#RobotoCondensed-Regular" />
+            </Style>
+            <Style x:Key="ButtonStyle"
+                       TargetType="Label">
+                    <Setter Property="FontSize"
+                            Value="14" />
+                    <Setter Property="BackgroundColor"
+                        Value="#2ab999" />
+                    <Setter Property="TextColor"
+                            Value="White" />
+                <Setter Property="FontSize"
+                        Value="14" />
+                <Setter Property="FontFamily"
+                            Value="RobotoCondensed-Regular.ttf#RobotoCondensed-Regular" />
+                </Style>
+            <Style TargetType="controls:CustomView">
+                <Setter Property="CornerRadius">
+                    <OnPlatform x:TypeArguments="x:Double"
+                                Android="15"
+                                iOS="5" />
+                </Setter>                        
+            </Style>
+        </ResourceDictionary>
+
+  </slideover:MenuContainerPage.Resources>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Grid x:Name="grid"
+                  VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackLayout x:Name="stackHeading" Grid.Row="0"
+                             Grid.Column="0"
+                             BackgroundColor="{StaticResource HeaderColor}">
+                    <Grid Margin="15"
+                          HeightRequest="{StaticResource HeaderHeight}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25*" />
+                            <ColumnDefinition Width="45*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10*" />
+                        </Grid.ColumnDefinitions>
+                        <Image x:Name="imgBack"
+                               Grid.Row="0"
+                               Grid.Column="0"
+                               Source="Back.png"
+                               Aspect="AspectFit"
+                               HorizontalOptions="Start">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label x:Name="headerTitle"
+                               Grid.Row="0"
+                               Grid.Column="1"
+                               HorizontalOptions="Center"
+                               TextColor="White"
+                               FontSize="Medium"
+                               VerticalOptions="Center"
+                               FontFamily="RobotoCondensed-Regular.ttf#RobotoCondensed-Regular" LineBreakMode="TailTruncation"/>
+                        <Grid Grid.Row="0"
+                              Grid.Column="2"
+                              HorizontalOptions="Start">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2" />
+                            </Grid.GestureRecognizers>
+                            <Image  Source="notification.png"
+                                    Aspect="AspectFit"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center">
+                            </Image>
+                            <controls:Badge Text="0"
+                                            BoxColor="Red"
+                                            VerticalOptions="Start"
+                                            HorizontalOptions="Start" />
+                        </Grid>
+                      <Image  Grid.Row="0"
+                              Grid.Column="3"
+                              Source="settings.png"
+                              Aspect="AspectFit"
+                              HorizontalOptions="Start">
+                        <Image.GestureRecognizers>
+                          <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3" />
+                        </Image.GestureRecognizers>
+                      </Image>
+                        <Image  Grid.Row="0"
+                                Grid.Column="4"
+                                Source="menu.png"
+                                Aspect="AspectFit"
+                                HorizontalOptions="Start">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</slideover:MenuContainerPage>

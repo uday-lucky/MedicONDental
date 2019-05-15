@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MedCon.CustomControls"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             x:Class="MedCon.Views.LoginPage"
+             BackgroundImage="background.png">
+    <ContentPage.Content>     
+        <StackLayout VerticalOptions="FillAndExpand"
+                     Spacing="0">
+            <controls:HeaderView TitleText="Login" IsBackVisible="False"/>
+            <Grid Padding="0,30,0,0"
+                  RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2.9*" />
+                    <RowDefinition Height="3.4*" />
+                    <RowDefinition Height="4.5*" />
+                </Grid.RowDefinitions>
+                <StackLayout VerticalOptions="Center"
+                             HorizontalOptions="Center">
+                    <Label Text="Welcome to"
+                           FontSize="40"
+                           HorizontalOptions="Center"
+                           Style="{StaticResource LabelStyle}"
+                           TextColor="#01579B"/>
+                    <Label HorizontalTextAlignment="Center"
+                           Text="{Binding LoginDescription}"
+                           HorizontalOptions="Center"
+                           Style="{StaticResource LabelStyle}"/>
+                </StackLayout>
+                <StackLayout VerticalOptions="Center"
+                             Grid.Row="1"
+                             Margin="43,0"
+                             Spacing="13">
+                    <Frame Style="{StaticResource FrameStyle}">
+                        <controls:CustomEntry Placeholder="Email ID"
+                                              Style="{StaticResource EntryStyle}"
+                                              Text="{Binding Username}"
+                                              Keyboard="Email"/>
+                    </Frame>
+                    <Frame Style="{StaticResource FrameStyle}">
+                        <controls:CustomEntry Placeholder="Password"
+                                              Style="{StaticResource EntryStyle}"
+                                              Text="{Binding Password}" IsPassword="True"/>
+                    </Frame>
+                    <StackLayout Padding="0"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Start"
+                                 Margin="6,8,0,0"
+                                 Spacing="0">
+                        <Label Text="Forgot Password?"
+                               Style="{StaticResource LabelStyle}" />
+                        <Grid BackgroundColor="Black"
+                              HeightRequest="1"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ForgotPwdCommand}" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout VerticalOptions="Center"
+                             Grid.Row="2"
+                             Margin="43,0">
+                    <Button Text="Login"
+                            Style="{StaticResource ButtonStyle}"
+                            Command="{Binding LoginCommand}"></Button>
+                    <Label Text="Don't have an account yet?"
+                           HorizontalOptions="Center"
+                           Margin="0,25,0,0"
+                           Style="{StaticResource LabelStyle}" />
+                    <Button Text="Register Now!"
+                            Style="{StaticResource ButtonStyle}"
+                            Command="{Binding RegistrationCommand}"></Button>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MedCon.CustomControls.DashboardCalendar">
+    <ContentView.Content>
+        <StackLayout Padding="10">
+            <StackLayout Orientation="Horizontal">
+                <Image x:Name="imgPrev"
+                       HeightRequest="20"
+                       WidthRequest="20"
+                       Source="left_arrow"
+                       Margin="10,0,0,0" />
+                <!--<Button x:Name="btnPrev" Text="Prev"
+                        TextColor="White"
+                        BackgroundColor="Green"
+                        WidthRequest="100"
+                        HorizontalOptions="StartAndExpand" />-->
+                <Label x:Name="lblMonth"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       FontSize="30"
+                       TextColor="Black" />
+                <Image x:Name="imgNext"
+                       HeightRequest="20"
+                       WidthRequest="20"
+                       Source="right_arrow"
+                       Margin="0,0,10,0" />
+                <!--<Button x:Name="btnNext" Text="Next"
+                        TextColor="White"
+                        BackgroundColor="Green"
+                        WidthRequest="100"
+                        HorizontalOptions="EndAndExpand" />-->
+            </StackLayout>
+            <Grid ColumnSpacing="1"
+                  Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="14*" />
+                    <ColumnDefinition Width="14*" />
+                    <ColumnDefinition Width="14*" />
+                    <ColumnDefinition Width="14*" />
+                    <ColumnDefinition Width="14*" />
+                    <ColumnDefinition Width="14*" />
+                    <ColumnDefinition Width="14*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       Text="Sun"
+                       FontSize="Medium"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="#00B0FF" />
+                <Label Grid.Row="0"
+                       Grid.Column="1"
+                       Text="Mon"
+                       FontSize="Medium"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="#01579B" />
+                <Label Grid.Row="0"
+                       Grid.Column="2"
+                       Text="Tue"
+                       FontSize="Medium"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="#01579B" />
+                <Label Grid.Row="0"
+                       Grid.Column="3"
+                       Text="Wed"
+                       FontSize="Medium"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="#01579B" />
+                <Label Grid.Row="0"
+                       Grid.Column="4"
+                       Text="Thu"
+                       FontSize="Medium"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="#01579B" />
+                <Label Grid.Row="0"
+                       Grid.Column="5"
+                       Text="Fri"
+                       FontSize="Medium"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="#01579B" />
+                <Label Grid.Row="0"
+                       Grid.Column="6"
+                       Text="Sat"
+                       FontSize="Medium"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="#00B0FF" />
+            </Grid>
+            <Label HeightRequest="2"
+                   BackgroundColor="#cccccc" />
+            <Grid x:Name="grid"
+                  ColumnSpacing="1"
+                  RowSpacing="1"
+                  Margin="0,6,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="14*" />
+                    <ColumnDefinition Width="14*" />
+                    <ColumnDefinition Width="14*" />
+                    <ColumnDefinition Width="14*" />
+                    <ColumnDefinition Width="14*" />
+                    <ColumnDefinition Width="14*" />
+                    <ColumnDefinition Width="14*" />
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

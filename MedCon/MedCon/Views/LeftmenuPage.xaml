@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<slideover:SlideMenuView  xmlns="http://xamarin.com/schemas/2014/forms"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          xmlns:slideover="clr-namespace:SlideOverKit;assembly=SlideOverKit"
+                          xmlns:controls="clr-namespace:MedCon.CustomControls"
+                          xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+                          xmlns:viewModels="clr-namespace:MedCon.ViewModels"
+                          ios:Page.UseSafeArea="true"
+                          x:Class="MedCon.Views.LeftmenuPage">
+    <slideover:SlideMenuView.BindingContext>
+        <viewModels:LeftmenuViewModel></viewModels:LeftmenuViewModel>
+    </slideover:SlideMenuView.BindingContext>
+    <Grid VerticalOptions="FillAndExpand">
+        <Grid.Padding>
+            <OnPlatform x:TypeArguments="Thickness">
+                <OnPlatform.Platforms>
+                    <On Platform="iOS"
+                        Value="0, 30, 0, 0" />
+                    <On Platform="Android"
+                        Value="0, 5, 0, 0" />
+                    <On Platform="UWP"
+                        Value="0, 0, 0, 0" />
+                </OnPlatform.Platforms>
+            </OnPlatform>
+        </Grid.Padding>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150">               
+            </RowDefinition>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0"
+                     Grid.Column="0"
+                     x:Name="stack"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center">
+            <controls:CircleImage HeightRequest="100"
+                                  WidthRequest="100"
+                                  Source="{Binding ProfileImgSource}"
+                                  Aspect="AspectFill"
+                                  HorizontalOptions="Center" />
+            <Label Text="{Binding ProfileName}"
+                   Style="{StaticResource LabelStyle}"
+                   TextColor="{StaticResource WhiteColor}"
+                   HorizontalTextAlignment="Center" />
+        </StackLayout>
+        <Label Grid.Row="1"
+               Grid.Column="0"
+               HeightRequest="3"
+               BackgroundColor="Silver" />
+        <ListView Grid.Row="2"
+                  Grid.Column="0"
+                  HasUnevenRows="True"
+                  SeparatorColor="Silver"
+                  ItemsSource="{Binding menu}"
+                  x:Name="listview"
+                  BackgroundColor="#5C6BC0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid HeightRequest="55" ColumnSpacing="8">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding MenuSelectedCommand}"
+                                                      CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*" />
+                                <ColumnDefinition Width="10*" />
+                                <ColumnDefinition Width="80*" />
+                                <ColumnDefinition Width="5*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="0"
+                                   Grid.Column="1"
+                                   HeightRequest="25"
+                                   WidthRequest="25"
+                                   VerticalOptions="Center" Source="{Binding MenuIcon}"/>
+                            <Label Grid.Row="0"
+                                   Grid.Column="2"
+                                   Text="{Binding MenuName}"
+                                   Style="{StaticResource LabelStyle}"
+                                   TextColor="{StaticResource WhiteColor}"
+                                   FontSize="17"
+                                   VerticalOptions="Center" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</slideover:SlideMenuView>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MedCon.CustomControls.StatusViewSmall"
+             x:Name="Control">
+    <ContentView.Content>
+        <RelativeLayout>
+            <StackLayout x:Name="stackMedicine"
+                         BackgroundColor="Silver"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Constant=0}"
+                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=0.10, Constant=6}">
+                <StackLayout Margin="2"
+                             BackgroundColor="White">
+                    <Image x:Name="imgMedicine"
+                           Margin="3"
+                           HeightRequest="18"
+                           WidthRequest="18"
+                           Source="{Binding MedicineImage}">
+                    </Image>
+                </StackLayout>
+            </StackLayout>
+            <Image x:Name="imgStatus"
+                   Source="{Binding StatusIconSource, Source={x:Reference Control}}"
+                   HeightRequest="20"
+                   WidthRequest="20"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Constant=11}"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=0.5, Constant=20}" />
+        </RelativeLayout>
+    </ContentView.Content>
+</ContentView>

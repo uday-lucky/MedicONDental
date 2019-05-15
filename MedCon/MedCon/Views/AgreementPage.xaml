@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             x:Class="MedCon.Views.AgreementPage"
+             ios:Page.UseSafeArea="true" BackgroundColor="{StaticResource PageColor}">
+    <ContentPage.Content>
+        <Grid>
+            <Image Grid.Row="0"
+                   Grid.Column="0"
+                   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                   Source="bg_license.png"/>
+            <StackLayout Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" Padding="10">
+            <Label Text="{Binding Heading1}"
+                   HorizontalOptions="CenterAndExpand"
+                   Style="{StaticResource LabelStyle}" FontSize="18"/>
+            <Label Text="{Binding Heading2}"
+                   HorizontalOptions="Center"
+                   Style="{StaticResource LabelStyle}"
+                   FontSize="20"
+                   TextColor="{StaticResource ControlsColor}"/>
+            <ScrollView Orientation="Vertical">
+                <StackLayout>
+                    <ActivityIndicator HorizontalOptions="Center"
+                                       IsRunning="True"
+                                       Color="{StaticResource ControlsColor}"
+                                       IsVisible="{Binding IsBusy}" />                   
+                    <Label Text="{Binding AgreementText}"
+                       Style="{StaticResource LabelStyle}" FontSize="16"/>
+                        <StackLayout Margin="10,10,10,5"
+                                     Spacing="15"
+                                     Orientation="Horizontal"
+                                     VerticalOptions="End">
+                            <Frame CornerRadius="10"
+                                   HasShadow="False"
+                                   Padding="10"
+                                   BackgroundColor="#2ab999"
+                                   HorizontalOptions="FillAndExpand">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding AcceptCommand}" />
+                                </Frame.GestureRecognizers>
+                                <Label Text="Agree"
+                                       Style="{StaticResource LabelStyle}"
+                                       FontSize="16"
+                                       TextColor="White"
+                                       HorizontalTextAlignment="Center" />
+                            </Frame>
+                            <Frame CornerRadius="10"
+                                   HasShadow="False"
+                                   Padding="10"
+                                   BackgroundColor="#e53935"
+                                   HorizontalOptions="FillAndExpand">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding DeclineCommand}" />
+                                </Frame.GestureRecognizers>
+                                <Label Text="Decline"
+                                       Style="{StaticResource LabelStyle}"
+                                       FontSize="16"
+                                       TextColor="White"
+                                       HorizontalTextAlignment="Center" />
+                            </Frame>
+                        </StackLayout>       
+                </StackLayout>
+                </ScrollView>               
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

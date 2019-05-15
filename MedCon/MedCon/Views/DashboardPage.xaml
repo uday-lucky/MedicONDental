@@ -1,0 +1,532 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:CustomPageTemplate xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:controls="clr-namespace:MedCon.CustomControls"
+                  x:Class="MedCon.Views.DashboardPage"
+                  xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+                  ios:Page.UseSafeArea="true"
+                  xmlns:views="clr-namespace:MedCon.Views"
+                  xmlns:slideover="clr-namespace:SlideOverKit;assembly=SlideOverKit"
+                  xmlns:behaviors="clr-namespace:MedCon.Behaviors"
+                  BackgroundColor="White"
+                  BackgroundImage="background.png" IsBackVisible="False" TitleText="Dashboard">
+  <views:CustomPageTemplate.CustomDataTemplate>
+    <Grid Margin="5,10,5,10">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="10*" />
+        <RowDefinition Height="90*" />
+      </Grid.RowDefinitions>
+      <Grid Grid.Row="0"
+            Grid.Column="0"
+            Padding="10,10,10,0">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="35" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <!--<Frame Grid.Row="0"
+                       Grid.Column="0"
+                       Padding="10,-5,-5,-5"
+                       CornerRadius="4"
+                       HasShadow="False">-->
+        <Picker x:Name="trialPicker" IsVisible="False"
+                ItemsSource="{Binding TrialsList}"
+                ItemDisplayBinding="{Binding Name}" SelectedIndex="{Binding TrialSelectedIndex}">
+           <Picker.Behaviors>
+                                        <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged"
+                                                                          Command="{Binding TrialSelectedCommand}" />
+                                    </Picker.Behaviors>
+        
+        </Picker>
+        <controls:ShapeView Grid.Row="0"
+                                Grid.Column="0" Color="White" CornerRadius="3" Padding="0">
+          <StackLayout Orientation="Horizontal" VerticalOptions="Fill" WidthRequest="150">
+            <StackLayout.GestureRecognizers>
+              <TapGestureRecognizer Command="{Binding SelectTrialsCommand}" />
+            </StackLayout.GestureRecognizers>
+            <Label Text="{Binding SelectedtrialName}"
+                   Style="{StaticResource LabelStyle}" FontSize="12" Margin="2"/>
+            <Image Source="dropdown.png"
+                   Aspect="AspectFit" HorizontalOptions="EndAndExpand" Margin="-3"/>
+          </StackLayout>
+        </controls:ShapeView>
+        <!--</Frame>-->
+        <StackLayout Grid.Row="0"
+                     Grid.Column="1"
+                     Orientation="Horizontal"
+                     HorizontalOptions="End">
+          <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding GotoCalendarCommand}" />
+          </StackLayout.GestureRecognizers>
+          <StackLayout VerticalOptions="CenterAndExpand"
+                       Spacing="0">
+            <Label Text="{Binding DayName}"
+                   Style="{StaticResource LabelStyle}"
+                   HorizontalTextAlignment="End" />
+            <Label Text="{Binding SelectedDate}"
+                   Style="{StaticResource LabelStyle}"
+                   HorizontalTextAlignment="End" />
+          </StackLayout>
+          <Image Aspect="AspectFit"
+                 Source="calendar.png"
+                 WidthRequest="30"
+                 HeightRequest="30"
+                 VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+      </Grid>
+      <Grid Grid.Row="1"
+            Grid.Column="0"
+            VerticalOptions="FillAndExpand"
+            ColumnSpacing="15"
+            RowSpacing="15"
+            Padding="10">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="10*" />
+          <RowDefinition Height="55*" />
+          <RowDefinition Height="30*" />
+          <RowDefinition Height="5*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="33.33*" />
+          <ColumnDefinition Width="33.33*" />
+          <ColumnDefinition Width="33.33*" />
+        </Grid.ColumnDefinitions>
+        <Frame Grid.Row="0"
+               Grid.Column="0"
+               Grid.ColumnSpan="3"
+               HasShadow="False"
+               CornerRadius="4"
+               Padding="5">
+          <Grid Margin="5,0,10,0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition>
+                <ColumnDefinition.Width>
+                  <OnPlatform x:TypeArguments="GridLength"
+                              iOS="130"
+                              Android="120"/>
+                </ColumnDefinition.Width>
+              </ColumnDefinition>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Text="Current Adherence"
+                   Style="{StaticResource LabelStyle}"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Start"/>
+            <Label  Grid.Row="0"
+                    Grid.Column="1"
+                    Text="{Binding DoseAdherence, StringFormat='{0}%'}"
+                    Style="{StaticResource LabelStyle}"
+                    VerticalTextAlignment="Center"
+                    FontSize="Medium"
+                    TextColor="#4caf50"
+                    FontFamily="{StaticResource RobotoMedium}"
+                    HorizontalTextAlignment="Start" HorizontalOptions="Start"/>
+            <Image  Grid.Row="0"
+                    Grid.Column="2"
+                    Aspect="AspectFit"
+                    HeightRequest="30"
+                    WidthRequest="30"
+                    Source="{Binding DoseAdherenceImage}"
+                    HorizontalOptions="End" />
+          </Grid>
+        </Frame>
+        <controls:CustomView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="White"
+                             HeightRequest="50"
+                             IsClippedToBorder="True">
+          <controls:CustomView>
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="7" />
+                <RowDefinition Height="*" />
+              </Grid.RowDefinitions>
+              <Label Grid.Row="0" Grid.Column="0"
+                     BackgroundColor="{Binding PresentColor}" HorizontalOptions="Fill"/>
+              <Grid Grid.Row="1" Grid.Column="0" RowSpacing="0" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0"
+                             Grid.Column="0"
+                             Orientation="Horizontal"
+                             Spacing="15"
+                             VerticalOptions="Start">
+                  <Image Source="{Binding PresentDayImage}" HeightRequest="40" WidthRequest="40" Aspect="AspectFit"/>
+                  <Label Text="{Binding DayTimeName}"
+                         Style="{StaticResource LabelStyle}"
+                         FontSize="Large"
+                         TextColor="#01579b"
+                         VerticalTextAlignment="Center"
+                         HorizontalTextAlignment="Start" />
+                </StackLayout>
+                <ListView Grid.Row="1"
+                          Grid.Column="0"                          
+                          SeparatorVisibility="None"
+                          ItemsSource="{Binding PresentMedicines}" >
+                  <ListView.RowHeight>
+                    <OnPlatform x:TypeArguments="x:Int32">
+                      <On Platform="iOS">58</On>
+                      <On Platform="Android">56</On>
+                    </OnPlatform>
+                  </ListView.RowHeight>
+                  <ListView.ItemTemplate>
+                    <DataTemplate>
+                      <ViewCell>
+                        <Frame HasShadow="False"
+                               OutlineColor="White"
+                               Padding="5">
+                          <StackLayout Spacing="0"
+                                       Orientation="Horizontal">
+                            <controls:StatusView MedicineIcon="{Binding medicine_image}"
+                                                 StatusIconSource="{Binding StatusImage}"
+                                                 VerticalOptions="Center" />
+                            <Grid ColumnSpacing="6"
+                                  RowSpacing="5"
+                                  VerticalOptions="CenterAndExpand"
+                                  HorizontalOptions="FillAndExpand">
+                              <Grid.RowDefinitions>
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="20" />
+                              </Grid.RowDefinitions>
+                              <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="55" />
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition>
+                                   <ColumnDefinition.Width>
+                <OnPlatform x:TypeArguments="GridLength" iOS="60" Android="55"/>
+              </ColumnDefinition.Width>
+                                </ColumnDefinition>
+                              </Grid.ColumnDefinitions>
+
+                              <Label Grid.Row="0"
+                                     Grid.Column="0"
+                                     Text="{Binding name}"
+                                     Style="{StaticResource LabelStyle}"
+                                     FontSize="{StaticResource SmallFont}"
+                                     HorizontalOptions="Center" />
+                              <StackLayout Grid.Row="1"
+                                           Grid.Column="0"
+                                           Orientation="Horizontal"
+                                           Spacing="0" WidthRequest="180">
+                                <Label Text="Container#"
+                                       Style="{StaticResource LabelStyle}"
+                                       TextColor="#b6b6b6" FontSize="{StaticResource MicroFont}" MinimumWidthRequest="80"/>
+                                <Label Text="{Binding container_id}"
+                                       Style="{StaticResource LabelStyle}" FontSize="{StaticResource MicroFont}" MinimumWidthRequest="100"/>
+                              </StackLayout>
+                              <!--<Label Grid.Row="1"
+                                                                   Grid.Column="0"
+                                                                   Text="{Binding description}"
+                                                                   Style="{StaticResource LabelStyle}"
+                                                                   FontSize="12"
+                                                                   HorizontalOptions="Center" />-->
+                              <Label Grid.Row="0"
+                                     Grid.Column="1"
+                                     Text="{Binding time}"
+                                     Style="{StaticResource LabelStyle}"
+                                     FontSize="{StaticResource SmallFont}"
+                                     HorizontalOptions="Center" />
+                              <Label Grid.Row="1"
+                                     Grid.Column="1"
+                                     Text="{Binding wieght}"
+                                     Style="{StaticResource LabelStyle}"
+                                     FontSize="{StaticResource SmallFont}"
+                                     HorizontalOptions="Center" />
+                              <Label Grid.Row="0"
+                                     Grid.Column="2"
+                                     Text="{Binding time1}"
+                                     Style="{StaticResource LabelStyle}"
+                                     TextColor="#4caf50"
+                                     FontSize="{StaticResource SmallFont}"
+                                     HorizontalOptions="Center" />
+                              <Frame Grid.Row="0"
+                                     Grid.Column="3"
+                                     HasShadow="False"
+                                     CornerRadius="1"
+                                     Padding="5,0,5,0"
+                                     BackgroundColor="#7babf7"
+                                     HorizontalOptions="Center" IsVisible="{Binding IsScanVisible}">
+                                <StackLayout
+                                             Orientation="Horizontal">
+                                  <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ScanCommand}" CommandParameter="{Binding .}"/>
+                                  </StackLayout.GestureRecognizers>
+                                  <Label Text="Scan"
+                                         Style="{StaticResource LabelStyle}"
+                                         FontSize="{StaticResource MicroFont}" />
+                                  <Image Source="barcode.png"
+                                         WidthRequest="12"
+                                         HeightRequest="16"
+                                         Aspect="AspectFit" />
+                                </StackLayout>
+                              </Frame>
+                               <Frame Grid.Row="0"
+                                     Grid.Column="3"
+                                     HasShadow="False"
+                                     CornerRadius="1"
+                                     Padding="5,0,5,0"
+                                     BackgroundColor="#7babf7"
+                                     HorizontalOptions="Center" IsVisible="{Binding IsManualVisible}">                               
+                                  <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ScanCommand}" CommandParameter="{Binding .}"/>
+                                  </Frame.GestureRecognizers>
+                                  <Label Text="Manual"
+                                         Style="{StaticResource LabelStyle}"
+                                         FontSize="{StaticResource MicroFont}" />
+                              </Frame>
+                              <Frame Grid.Row="1"
+                                     Grid.Column="3"
+                                     HasShadow="False"
+                                     CornerRadius="1"
+                                     Padding="5,0,5,0"
+                                     HorizontalOptions="Center">
+                                <Frame.GestureRecognizers>
+                                  <TapGestureRecognizer
+                                      Command="{Binding DetailsCommand}"
+                                      CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+                                <StackLayout Orientation="Horizontal">
+                                  <Image Source="details.png"
+                                         WidthRequest="12"
+                                         HeightRequest="16"
+                                         Aspect="AspectFit" />
+                                  <Label Text="Details"
+                                         Style="{StaticResource LabelStyle}"
+                                         FontSize="{StaticResource MicroFont}" />
+                                </StackLayout>
+                              </Frame>
+                            </Grid>
+                          </StackLayout>
+                        </Frame>
+                      </ViewCell>
+                    </DataTemplate>
+                  </ListView.ItemTemplate>
+                </ListView>
+              </Grid>
+            </Grid>
+          </controls:CustomView>
+        </controls:CustomView>
+        <controls:CustomView BackgroundColor="White"
+                             IsClippedToBorder="True"
+                             Grid.Row="2"
+                             Grid.Column="0">  
+          <controls:CustomView>
+            <StackLayout Grid.Row="1"
+                         Grid.Column="0"
+                         Grid.ColumnSpan="3"
+                         BackgroundColor="White" Spacing="0">       
+              <StackLayout.GestureRecognizers>
+        <TapGestureRecognizer
+            Command="{Binding FooterCommand}"
+            CommandParameter="{Binding Footer1Text}" />
+    </StackLayout.GestureRecognizers>
+              <Label HeightRequest="7"
+                     BackgroundColor="{Binding Footer1Color}" />
+              <StackLayout Grid.Row="0"
+                           Grid.Column="0"
+                           Orientation="Horizontal"
+                           VerticalOptions="Start">
+                <Image Source="{Binding Footer1Image}"
+                       HeightRequest="30"
+                       WidthRequest="30" />
+                <Label x:Name="lbl1" Text="{Binding Footer1Text}"
+                       Style="{StaticResource LabelStyle}"
+                       FontSize="{StaticResource SmallFont}"
+                       TextColor="#01579b"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start" />
+              </StackLayout>
+              <controls:BindableGrid ItemsSource="{Binding Footer1List}" VerticalOptions="Start"> 
+                <DataTemplate>
+                  <controls:StatusViewSmall MedicineIcon="{Binding MedicineImage}"
+                                            StatusIconSource="{Binding StatusImage}"/>
+                </DataTemplate>
+              </controls:BindableGrid>
+            </StackLayout>
+          </controls:CustomView>
+        </controls:CustomView>
+        <controls:CustomView BackgroundColor="White"
+                             IsClippedToBorder="True"
+                             Grid.Row="2"
+                             Grid.Column="1">
+          <controls:CustomView>
+            <StackLayout Grid.Row="1"
+                         Grid.Column="0"
+                         Grid.ColumnSpan="3"
+                         BackgroundColor="White"
+                         Spacing="0">
+                <StackLayout.GestureRecognizers>
+        <TapGestureRecognizer
+            Command="{Binding FooterCommand}"
+            CommandParameter="{Binding Footer2Text}" />
+    </StackLayout.GestureRecognizers>
+              <Label HeightRequest="7"
+                     BackgroundColor="{Binding Footer2Color}" />
+              <StackLayout Grid.Row="0"
+                           Grid.Column="0"
+                           Orientation="Horizontal"
+                           VerticalOptions="Start">
+                <Image Source="{Binding Footer2Image}"
+                       HeightRequest="30"
+                       WidthRequest="30" />
+                <Label Text="{Binding Footer2Text}"
+                       Style="{StaticResource LabelStyle}"
+                       FontSize="{StaticResource SmallFont}"
+                       TextColor="#01579b"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start" />
+              </StackLayout>
+              <controls:BindableGrid ItemsSource="{Binding Footer2List}"
+                                     VerticalOptions="Start">
+                <DataTemplate>
+                  <controls:StatusViewSmall MedicineIcon="{Binding MedicineImage}"
+                                            StatusIconSource="{Binding StatusImage}" />
+                </DataTemplate>
+              </controls:BindableGrid>
+            </StackLayout>
+          </controls:CustomView>
+        </controls:CustomView>
+        <controls:CustomView BackgroundColor="White"
+                             IsClippedToBorder="True"
+                             Grid.Row="2"
+                             Grid.Column="2">
+          <controls:CustomView>
+            <StackLayout Grid.Row="1"
+                         Grid.Column="0"
+                         Grid.ColumnSpan="3"
+                         BackgroundColor="White"
+                         Spacing="0">
+                <StackLayout.GestureRecognizers>
+        <TapGestureRecognizer
+            Command="{Binding FooterCommand}"
+            CommandParameter="{Binding Footer3Text}" />
+    </StackLayout.GestureRecognizers>
+              <Label HeightRequest="7"
+                     BackgroundColor="{Binding Footer3Color}" />
+              <StackLayout Grid.Row="0"
+                           Grid.Column="0"
+                           Orientation="Horizontal"
+                           VerticalOptions="Start">
+                <Image Source="{Binding Footer3Image}"
+                       HeightRequest="30"
+                       WidthRequest="30" />
+                <Label Text="{Binding Footer3Text}"
+                       Style="{StaticResource LabelStyle}"
+                       FontSize="{StaticResource SmallFont}"
+                       TextColor="#01579b"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start" />
+              </StackLayout>
+              <controls:BindableGrid ItemsSource="{Binding Footer3List}"
+                                     VerticalOptions="Start">
+                <DataTemplate>
+                  <controls:StatusViewSmall MedicineIcon="{Binding MedicineImage}"
+                                            StatusIconSource="{Binding StatusImage}" />
+                </DataTemplate>
+              </controls:BindableGrid>
+            </StackLayout>
+          </controls:CustomView>
+        </controls:CustomView>
+        <!--<controls:CustomView BackgroundColor="White"
+                                     HeightRequest="50"
+                                     IsClippedToBorder="True"
+                                     Grid.Row="2"
+                                     Grid.Column="1">
+                    <controls:CustomView>
+                        <StackLayout Grid.Row="1"
+                                     Grid.Column="0"
+                                     Grid.ColumnSpan="3"
+                                     BackgroundColor="White">
+                            <Label HeightRequest="7"
+                                   BackgroundColor="#03a9f4" />
+                            <StackLayout Grid.Row="0"
+                                         Grid.Column="0"
+                                         Orientation="Horizontal"
+                                         VerticalOptions="Start">
+                                <Image Source="afternoon.png"
+                                       HeightRequest="30"
+                                       WidthRequest="30" />
+                                <Label Text="Afternoon"
+                                       Style="{StaticResource LabelStyle}"
+                                       FontSize="Small"
+                                       TextColor="#01579b"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Start" />
+                            </StackLayout>
+                        </StackLayout>
+                    </controls:CustomView>
+                </controls:CustomView>-->
+        <!--<controls:CustomView BackgroundColor="White"
+                                     HeightRequest="50"
+                                     IsClippedToBorder="True"
+                                     Grid.Row="2"
+                                     Grid.Column="2">
+                    <controls:CustomView>
+                        <StackLayout Grid.Row="1"
+                                     Grid.Column="0"
+                                     Grid.ColumnSpan="3"
+                                     BackgroundColor="White">
+                            <Label HeightRequest="7"
+                                   BackgroundColor="#0277bd" />
+                            <StackLayout Grid.Row="0"
+                                         Grid.Column="0"
+                                         Orientation="Horizontal"
+                                         VerticalOptions="Start">
+                                <Image Source="bedtime.png"
+                                       HeightRequest="25"
+                                       WidthRequest="25" />
+                                <Label Text="Bedtime"
+                                       Style="{StaticResource LabelStyle}"
+                                       FontSize="Small"
+                                       TextColor="#01579b"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Start" />
+                            </StackLayout>
+                        </StackLayout>
+                    </controls:CustomView>
+                </controls:CustomView>-->
+      </Grid>
+      <!--<Grid VerticalOptions="FillAndExpand" Padding="10,30,10,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0*" />
+                    <ColumnDefinition Width="98*" />
+                    <ColumnDefinition Width="0*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="1" Grid.Column="1" BackgroundColor="White">
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           HorizontalOptions="Start"
+                           Text="Test Trials" HeightRequest="30"/>
+                    <StackLayout Grid.Row="0"
+                                 Grid.Column="1"
+                                 HorizontalOptions="End"
+                                 BackgroundColor="Green">
+                        <Image Aspect="AspectFit"
+                               Source="downarrow.png"/>
+                    </StackLayout>                    
+                </Grid>
+                <controls:RoundedCornerView Grid.Row="2" Grid.Column="1" RoundedCornerRadius="10"
+                                            BorderColor="Red"
+                                            BorderWidth="10"
+                                            HeightRequest="400"
+                                            BackgroundColor="White"
+                                            Margin="20">
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Text="Hello" />//
+                </controls:RoundedCornerView>
+            </Grid>-->
+    </Grid>
+  </views:CustomPageTemplate.CustomDataTemplate>
+</views:CustomPageTemplate>

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:CustomPageTemplate xmlns="http://xamarin.com/schemas/2014/forms"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          x:Class="MedCon.Views.InvalidScanPage"
+                          xmlns:views="clr-namespace:MedCon.Views"
+                          BackgroundColor="{StaticResource PageColor}"
+                          TitleText="Confirmation">
+    <views:CustomPageTemplate.CustomDataTemplate>
+        <StackLayout VerticalOptions="FillAndExpand"
+                     Spacing="0"
+                     Margin="0,-6,0,0">
+            <StackLayout BackgroundColor="{StaticResource HeaderColor}"
+                         Orientation="Horizontal">                
+                    <Image HeightRequest="50"
+                           WidthRequest="50"
+                       Source="stop.png"
+                       Margin="20,0,0,10" />
+                    <Label Text="ALARM!"
+                           Style="{StaticResource LabelStyle}"
+                           TextColor="White"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           LineBreakMode="WordWrap"
+                           FontFamily="{StaticResource RobotoBold}"
+                       Margin="0,0,0,10" />
+            </StackLayout>
+            <Grid RowSpacing="0"
+                  BackgroundColor="Silver"
+                  VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="17*" />
+                    <RowDefinition Height="17*" />
+                    <RowDefinition Height="17*" />
+                    <RowDefinition Height="49*" />
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0"
+                             Grid.Column="0"
+                             Grid.RowSpan="3"
+                             BackgroundColor="{StaticResource PageColor}"
+                             VerticalOptions="Fill"
+                             Spacing="15"
+                             Padding="25">
+                    <Label Text="The container scanned does not contain the right medication. Please select the proper container."
+                           Style="{StaticResource LabelStyle}"
+                           TextColor="Black"
+                           FontSize="15"
+                           LineBreakMode="WordWrap"
+                           VerticalOptions="Start"
+                           HorizontalTextAlignment="Center" />
+                    <Label Text="IMPROPER MEDICATION!!"
+                           Style="{StaticResource LabelStyle}"
+                           TextColor="Black"
+                           FontSize="20"
+                           LineBreakMode="WordWrap"
+                           VerticalOptions="Start"
+                           FontFamily="{StaticResource RobotoBold}"
+                           HorizontalTextAlignment="Center" />
+                </StackLayout>
+                <StackLayout Grid.Row="3"
+                             Grid.Column="0"
+                             BackgroundColor="{StaticResource PageColor}"
+                             Spacing="0"
+                             VerticalOptions="Fill"
+                             HorizontalOptions="Fill">
+                    <StackLayout HeightRequest="40"
+                                 Orientation="Horizontal"
+                                 Spacing="1"
+                                 VerticalOptions="EndAndExpand"
+                                 HorizontalOptions="FillAndExpand">
+                        <StackLayout BackgroundColor="#2ab999"
+                                     HorizontalOptions="FillAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ScanCommand}" />
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="Scan"
+                                   Style="{StaticResource LabelStyle}"
+                                   TextColor="White"
+                                   FontSize="{StaticResource LargerSize}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+                        <StackLayout BackgroundColor="#e53935"
+                                     HorizontalOptions="FillAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CancelCommand}" />
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="Cancel"
+                                   Style="{StaticResource LabelStyle}"
+                                   TextColor="White"
+                                   FontSize="{StaticResource LargerSize}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </views:CustomPageTemplate.CustomDataTemplate>
+
+</views:CustomPageTemplate>

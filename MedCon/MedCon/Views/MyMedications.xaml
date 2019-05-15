@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MedCon.CustomControls"
+             x:Class="MedCon.Views.MyMedications">
+  <ContentView.Content>
+      <ScrollView x:Name="scrollView" Orientation="Vertical">
+            <StackLayout x:Name="stackContent" Orientation="Vertical" Padding="10,0,10,10">
+                
+            </StackLayout>
+      </ScrollView>
+  </ContentView.Content>
+</ContentView>

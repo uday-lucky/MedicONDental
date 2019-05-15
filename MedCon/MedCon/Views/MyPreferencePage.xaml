@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:CustomPageTemplate xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:MedCon.Views"
+             xmlns:controls="clr-namespace:MedCon.CustomControls"
+             x:Class="MedCon.Views.MyPreferencePage" TitleText="My Preferance">
+    <views:CustomPageTemplate.CustomDataTemplate>
+        <StackLayout VerticalOptions="FillAndExpand"
+                     Padding="10,5,10,0"
+                     BindingContext="{Binding MyPreference1}">
+            <StackLayout>
+                <StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,10">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TapCommand}"
+                                                  CommandParameter="0" />
+                        </StackLayout.GestureRecognizers>
+                        <StackLayout Spacing="2" HorizontalOptions="StartAndExpand">                            
+                            <Label Text="Language"
+                           Style="{StaticResource LabelStyle}"
+                           FontFamily="{StaticResource RobotoBold}" FontSize="16"/>
+                            <Label Text="{Binding Language}" Style="{StaticResource LabelStyle}" />
+                </StackLayout>
+                        <Image Source="{Binding LanguageArrowImage}"
+                       HeightRequest="25"
+                       WidthRequest="25"
+                       HorizontalOptions="End" VerticalOptions="Center"/>
+                </StackLayout>
+                    <Label HeightRequest="2"
+                           BackgroundColor="#dfe2ec"
+                           IsVisible="{Binding IsLanguageVisible}"/>
+                    <Label Text=""
+                           Style="{StaticResource LabelStyle}"
+                           IsVisible="{Binding IsLanguageVisible}" />
+                </StackLayout>
+            </StackLayout>
+            <Label HeightRequest="3"
+                   BackgroundColor="#cecece" />
+            <StackLayout>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="FillAndExpand"
+                                 Margin="0,10,0,10">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TapCommand}"
+                                                  CommandParameter="1" />
+                        </StackLayout.GestureRecognizers>
+                        <StackLayout Spacing="2"
+                                     HorizontalOptions="StartAndExpand">
+                            <Label Text="Dosing Time Zone"
+                                   Style="{StaticResource LabelStyle}"
+                                   FontFamily="{StaticResource RobotoBold}"
+                                   FontSize="16" />
+                            <Label Text="{Binding DoseTimeZone}" Style="{StaticResource LabelStyle}"/>
+                        </StackLayout>
+                        <Image Source="{Binding DoseTimeZoneArrowImage}"
+                               HeightRequest="25"
+                               WidthRequest="25"
+                               HorizontalOptions="End"
+                               VerticalOptions="Center" />
+                    </StackLayout>
+                    <Label HeightRequest="1"
+                           BackgroundColor="#dfe2ec"
+                           IsVisible="{Binding IsDosingTimeZoneVisible}" />
+                    <Label Text=""
+                           Style="{StaticResource LabelStyle}"
+                           IsVisible="{Binding IsDosingTimeZoneVisible}" />
+                </StackLayout>
+            </StackLayout>
+            <Label HeightRequest="3"
+                   BackgroundColor="#cecece" />
+            <StackLayout>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="FillAndExpand"
+                                 Margin="0,10,0,10" VerticalOptions="FillAndExpand">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TapCommand}"
+                                                  CommandParameter="2" />
+                        </StackLayout.GestureRecognizers>
+                        <StackLayout Spacing="2"
+                                     HorizontalOptions="StartAndExpand">
+                            <Label Text="TimeFormat"
+                                   Style="{StaticResource LabelStyle}"
+                                   FontFamily="{StaticResource RobotoBold}"
+                                   FontSize="16" />
+                            <Label Text="{Binding TimeFormat}" Style="{StaticResource LabelStyle}" />
+                        </StackLayout>
+                        <Image Source="{Binding TimeFormatArrowImage}"
+                               HeightRequest="25"
+                               WidthRequest="25"
+                               HorizontalOptions="End"
+                               VerticalOptions="Center" />
+                    </StackLayout>
+                    <Label HeightRequest="1"
+                           BackgroundColor="#dfe2ec"
+                           IsVisible="{Binding IsTimeFormatVisible}" />
+                    <StackLayout Orientation="Horizontal"
+                                 IsVisible="{Binding IsTimeFormatVisible}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Label Text="Use 24 hour format"
+                               Style="{StaticResource LabelStyle}"
+                                HorizontalOptions="StartAndExpand"/>
+                        <Image Source="{Binding TimeFormatImage}" HeightRequest="30" VerticalOptions="Fill" WidthRequest="40" Aspect="AspectFill" HorizontalOptions="End"/>
+                    </StackLayout>                    
+                </StackLayout>
+            </StackLayout>
+            <Label HeightRequest="3"
+                   BackgroundColor="#cecece" />
+            <StackLayout>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="FillAndExpand"
+                                 Margin="0,10,0,10">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TapCommand}"
+                                                  CommandParameter="3" />
+                        </StackLayout.GestureRecognizers>
+                        <StackLayout Spacing="2"
+                                     HorizontalOptions="StartAndExpand">
+                            <Label Text="Location"
+                                   Style="{StaticResource LabelStyle}"
+                                   FontFamily="{StaticResource RobotoBold}"
+                                   FontSize="16" />
+                            <ActivityIndicator HeightRequest="30" WidthRequest="30" Color="{StaticResource ControlsColor}"
+                                               IsVisible="{Binding IsBusy}"
+                                               IsRunning="True" />
+                            <Label Text="{Binding Location}" Style="{StaticResource LabelStyle}" />
+                        </StackLayout>
+                        <Image Source="{Binding LocationArrowImage}"
+                               HeightRequest="25"
+                               WidthRequest="25"
+                               HorizontalOptions="End"
+                               VerticalOptions="Center" />
+                    </StackLayout>
+                    <Label HeightRequest="1"
+                           BackgroundColor="#dfe2ec"
+                           IsVisible="{Binding IsLocationVisible}" />
+                    <Label Text=""
+                           Style="{StaticResource LabelStyle}"
+                           IsVisible="{Binding IsLocationVisible}" />
+                </StackLayout>
+            </StackLayout>
+            <Label HeightRequest="3"
+                   BackgroundColor="#cecece" />
+            <controls:DoseRemainderView VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" Margin="-10,0,-10,0"></controls:DoseRemainderView>
+        </StackLayout>
+    </views:CustomPageTemplate.CustomDataTemplate>
+</views:CustomPageTemplate>

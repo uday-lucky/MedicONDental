@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MedCon.CustomControls.TrialsHeaderView">
+    <ContentView.Content>
+        <Grid x:Name="gridHeading"
+              RowSpacing="0"
+              ColumnSpacing="0"
+              BackgroundColor="{Binding SubHeaderColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45" />
+                <RowDefinition Height="45" />
+                <RowDefinition Height="4" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*" />
+                <ColumnDefinition Width="25*" />
+                <ColumnDefinition Width="25*" />
+                <ColumnDefinition Width="25*" />
+            </Grid.ColumnDefinitions>
+            <Label Margin="10,0,0,0"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   x:Name="lblTimeName"
+                   Text="{Binding TimeName}"
+                   Style="{StaticResource LabelStyle}"
+                   HorizontalOptions="Start"
+                   FontSize="18"/>
+            <Label Margin="0,0,10,0"
+                   Grid.Row="0"
+                   Grid.Column="2"
+                   Grid.ColumnSpan="2"
+                   x:Name="lblTime"
+                   Text="{Binding Time}"
+                   Style="{StaticResource LabelStyle}"
+                   HorizontalOptions="End"
+                   FontSize="17" />
+            <StackLayout Grid.Row="1"
+                         Grid.Column="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding MorningTapped}" />
+                </StackLayout.GestureRecognizers>
+                <Image HeightRequest="35"
+                       WidthRequest="35"
+                       Source="morning_black.png"
+                       VerticalOptions="Center"
+                       Opacity="{Binding MorningOpacity}"/>
+            </StackLayout>
+            <StackLayout Grid.Row="1"
+                         Grid.Column="1">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AfternoonTapped}" />
+                </StackLayout.GestureRecognizers>
+                <Image HeightRequest="35"
+                       WidthRequest="35"
+                       Source="afternoon_black.png"
+                       Opacity="{Binding AfternonnOpacity}"
+                       VerticalOptions="Center" />
+            </StackLayout>
+            <StackLayout Grid.Row="1"
+                         Grid.Column="2">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding EveningTapped}" />
+                </StackLayout.GestureRecognizers>
+                <Image HeightRequest="35"
+                       WidthRequest="35"
+                       Source="evening_black.png"
+                       Opacity="{Binding EveningOpacity}"
+                       VerticalOptions="Center" />
+            </StackLayout>
+            <StackLayout  Grid.Row="1"
+                          Grid.Column="3">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BedtimeTapped}" />
+                </StackLayout.GestureRecognizers>
+                <Image HeightRequest="25"
+                       WidthRequest="25"
+                       Source="bedtime_black.png"
+                       Opacity="{Binding BedtimeOpacity}"
+                       VerticalOptions="End" />
+            </StackLayout>
+            <Label Grid.Row="2"
+                   Grid.Column="0"
+                   BackgroundColor="{Binding MorningSelectedColor}"/>
+            <Label Grid.Row="2"
+                   Grid.Column="1"
+                   BackgroundColor="{Binding AfternoonSelectedColor}"/>
+            <Label Grid.Row="2"
+                   Grid.Column="2"
+                   BackgroundColor="{Binding EveningSelectedColor}"/>
+            <Label Grid.Row="2"
+                   Grid.Column="3"
+                   BackgroundColor="{Binding BedtimeSelectedColor}"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

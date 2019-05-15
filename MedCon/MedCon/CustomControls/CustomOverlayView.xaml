@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             x:Class="MedCon.CustomControls.CustomOverlayView">
+  <ContentView.Content>
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand" Spacing="0">
+            <zxing:ZXingDefaultOverlay TopText="Hold your phone up to the barcode"
+                                       BottomText="Wait for the barcode to automatically scan"
+                                       AutomationId="zxingDefaultOverlay">
+            </zxing:ZXingDefaultOverlay>
+            <Button Text="Manual"
+                    BackgroundColor="#2ab999"
+                    TextColor="White" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

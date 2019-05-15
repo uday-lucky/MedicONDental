@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:CustomPageTemplate xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MedCon.CustomControls"
+             x:Class="MedCon.Views.ScanConfirmationPage"
+             xmlns:behaviors="clr-namespace:MedCon.Behaviors"
+             xmlns:views="clr-namespace:MedCon.Views"
+             BackgroundColor="{StaticResource PageColor}" TitleText="{Binding Title}">
+    <views:CustomPageTemplate.CustomDataTemplate>
+        <StackLayout VerticalOptions="FillAndExpand"
+                     Spacing="0" Margin="0,-6,0,0">
+            <StackLayout BackgroundColor="{StaticResource HeaderColor}"
+                         Orientation="Horizontal">
+                <StackLayout Padding="10,10,10,20">
+                    <Image HeightRequest="80"
+                           WidthRequest="80"
+                           Source="{Binding DoseTakenImage}" />
+                </StackLayout>
+                <StackLayout Padding="0,10,10,10"
+                             Spacing="4">
+                    <Label Text="{Binding TypeText}"
+                           Style="{StaticResource LabelStyle}"
+                           TextColor="White"
+                           FontSize="15" />
+                    <Label Text="{Binding DoseTokenText}"
+                           Style="{StaticResource LabelStyle}"
+                           TextColor="White"
+                           FontSize="{StaticResource LargerSize}"
+                           Margin="0,6,0,0" />
+                    <Label Text="{Binding AccurateType}"
+                           Style="{StaticResource LabelStyle}"
+                           TextColor="White"
+                           FontSize="{StaticResource LargerSize}" />
+                </StackLayout>
+            </StackLayout>
+            <Grid RowSpacing="2"
+                  BackgroundColor="Silver"
+                  VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="17*" />
+                    <RowDefinition Height="17*" />
+                    <RowDefinition Height="17*" />
+                    <RowDefinition Height="49*" />
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0"
+                             Grid.Column="0"
+                             BackgroundColor="{StaticResource PageColor}" Orientation="Horizontal" Spacing="15">
+                    <Image Source="{Binding MedicineImage}" Aspect="AspectFit" Margin="20,0,0,0" VerticalOptions="CenterAndExpand"/>
+                    <StackLayout VerticalOptions="CenterAndExpand" Spacing="3">
+                        <Label Style="{StaticResource LabelStyle}"
+                               Text="{Binding MedicineName}" FontSize="16"/>
+                        <Label Style="{StaticResource LabelStyle}"
+                               Text="{Binding MedicineType}"
+                               VerticalOptions="CenterAndExpand"
+                               TextColor="#b6b6b6"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Grid.Row="1"
+                             Grid.Column="0"
+                             BackgroundColor="{StaticResource PageColor}" Orientation="Horizontal">
+                    <StackLayout Margin="20,0,0,0" Spacing="3" VerticalOptions="CenterAndExpand">
+                        <Label Style="{StaticResource LabelStyle}"
+                               Text="{Binding DoseTotal}" FontSize="16"/>
+                        <Label Style="{StaticResource LabelStyle}"
+                               Text="Dose Total"
+                               VerticalOptions="CenterAndExpand"
+                               TextColor="#b6b6b6" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="EndAndExpand" Margin="0,0,20,0" Spacing="20">
+                        <Label x:Name="label1" Text="{Binding Value1}"
+                               Style="{StaticResource LabelStyle}"
+                               TextColor="#b6b6b6"
+                               FontSize="16">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding DecrementCommand}"
+                                                      CommandParameter="{Binding Source={x:Reference label1}, Path=Text}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="{Binding Value2}"
+                               Style="{StaticResource LabelStyle}"
+                               TextColor="Black"
+                               FontSize="18"
+                               FontAttributes="Bold"/>
+                        <Label x:Name="label3"
+                               Text="{Binding Value3}"
+                               Style="{StaticResource LabelStyle}"
+                               TextColor="#b6b6b6"
+                               FontSize="16">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding IncrementCommand}"
+                                                      CommandParameter="{Binding Source={x:Reference label3}, Path=Text}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="x"
+                               Style="{StaticResource LabelStyle}"
+                               TextColor="#b6b6b6"
+                               FontSize="11" Margin="0,0,-16,0"/>
+                        <Label Text="{Binding DoseWeight}"
+                               Style="{StaticResource LabelStyle}"
+                               FontSize="16" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Grid.Row="2"
+                             Grid.Column="0"
+                             BackgroundColor="{StaticResource PageColor}">
+                    <StackLayout Margin="20,0,0,0" VerticalOptions="CenterAndExpand" Spacing="3">
+                        <Label Text="{Binding CurrentDate}" FontSize="16"/>
+                        <Label Text="{Binding CurrentDay}"
+                               TextColor="#b6b6b6"/>
+                      <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeTimeCommand}"/>
+                      </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                  <controls:CustomTimePicker x:Name="pickerTime" IsVisible="False" Format="hh:mm tt" Time="{Binding DefaultTime}">
+                    <controls:CustomTimePicker.Behaviors>
+                      <behaviors:EventToCommandBehavior EventName="Unfocused"
+                                                        Command="{Binding TimeChanged}" CommandParameter="{Binding .}"/>
+                    </controls:CustomTimePicker.Behaviors>
+                  </controls:CustomTimePicker>
+                </StackLayout>
+                <StackLayout Grid.Row="3"
+                             Grid.Column="0"
+                             BackgroundColor="{StaticResource PageColor}"
+                             Spacing="0"
+                             VerticalOptions="Fill"
+                             HorizontalOptions="Fill">
+                    <StackLayout HeightRequest="40"
+                                 Orientation="Horizontal"
+                                 Spacing="1"
+                                 VerticalOptions="EndAndExpand"
+                                 HorizontalOptions="FillAndExpand">
+                        <StackLayout BackgroundColor="#2ab999"
+                                     HorizontalOptions="FillAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ConfirmDoseCommand}" />
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="Confirm"
+                                   Style="{StaticResource LabelStyle}"
+                                   TextColor="White"
+                                   FontSize="{StaticResource LargerSize}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+                        <StackLayout BackgroundColor="#e53935"
+                                     HorizontalOptions="FillAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CancelCommand}" />
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="Cancel"
+                                   Style="{StaticResource LabelStyle}"
+                                   TextColor="White"
+                                   FontSize="{StaticResource LargerSize}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </views:CustomPageTemplate.CustomDataTemplate>
+</views:CustomPageTemplate>

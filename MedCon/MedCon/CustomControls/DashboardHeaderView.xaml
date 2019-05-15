@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MedCon.CustomControls.DashboardHeaderView"
+             xmlns:controls="clr-namespace:MedCon.CustomControls"
+             HeightRequest="60"
+             BackgroundColor="{StaticResource HeaderColor}">
+    <ContentView.Content>
+        <Grid Padding="5,15,5,15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*" />
+                <ColumnDefinition Width="40*" />
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="10*" />
+            </Grid.ColumnDefinitions>
+            <Image x:Name="imgBack"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Source="Back.png"
+                   Aspect="AspectFit"
+                   HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label x:Name="headerTitle"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   HorizontalOptions="Center"
+                   TextColor="White"
+                   FontSize="Medium"
+                   VerticalOptions="Center"
+                   FontFamily="RobotoCondensed-Regular.ttf#RobotoCondensed-Regular" />
+            <Grid Grid.Row="0"
+                  Grid.Column="2"
+                  HorizontalOptions="Start">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2" />
+                </Grid.GestureRecognizers>
+                <Image  Source="notification.png"
+                        Aspect="AspectFit"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                </Image>
+                <controls:Badge Text="10"
+                                BoxColor="Red" VerticalOptions="Start" HorizontalOptions="Start"/>
+            </Grid>
+            <Image  Grid.Row="0"
+                    Grid.Column="3"
+                    Source="settings.png"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Start" />
+            <Image  Grid.Row="0"
+                    Grid.Column="4"
+                    Source="menu.png"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

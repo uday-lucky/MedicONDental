@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:CustomPageTemplate xmlns="http://xamarin.com/schemas/2014/forms"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          x:Class="MedCon.Views.ScanNewContainerPage"
+                          xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+                          ios:Page.UseSafeArea="true"
+                          xmlns:views="clr-namespace:MedCon.Views"
+                          xmlns:slideover="clr-namespace:SlideOverKit;assembly=SlideOverKit"
+                          BackgroundColor="White"
+                          BackgroundImage="background.png"
+                          TitleText="Dashboard">
+    <views:CustomPageTemplate.CustomDataTemplate>
+        <StackLayout VerticalOptions="FillAndExpand"
+                     BackgroundColor="Black"
+                     Opacity="0.7" Margin="0,-6,0,0">
+            <Frame HasShadow="False"
+                   Padding="5"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   BackgroundColor="#2ab999" 
+                   CornerRadius="15">
+              <Frame.WidthRequest>
+                <OnPlatform x:TypeArguments="x:Double">
+                  <On Platform="iOS">170</On>
+                  <On Platform="Android">150</On>
+                </OnPlatform>
+                </Frame.WidthRequest>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ScanCommand}" />
+                </Frame.GestureRecognizers>
+                <Label Text="Scan New Container"
+                       TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            </Frame>
+        </StackLayout>
+    </views:CustomPageTemplate.CustomDataTemplate>
+</views:CustomPageTemplate>

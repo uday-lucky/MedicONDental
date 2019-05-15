@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MedCon.CustomControls"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             x:Class="MedCon.Views.RegistrationConfirmPage"
+             BackgroundImage="background.png">
+    <ContentPage.Content>
+            <StackLayout VerticalOptions="FillAndExpand"
+                         Spacing="0">
+                <controls:HeaderView TitleText="Registration Confirmation" />
+                <StackLayout Margin="43,45,43,0">
+                    <Frame Style="{StaticResource FrameStyle}">
+                        <controls:CustomEntry Placeholder="Enter code"
+                                          Style="{StaticResource EntryStyle}"
+                                          Text="{Binding AccessCode}"/>
+                    </Frame>
+                    <Button Text="Register Now!"
+                            Grid.Row="2"
+                            Margin="0,11,0,0"
+                            Style="{StaticResource ButtonStyle}"
+                            Command="{Binding RegistrationConfirmCommand}" IsEnabled="{Binding IsBusy}"></Button>
+                    <Label HorizontalTextAlignment="Center"
+                           Margin="0,28,0,0"
+                           Text="Confirmation email is sent to your email id and provide the code sent to your mobile to confirm your mobile number."
+                           HorizontalOptions="Center"
+                           Style="{StaticResource LabelStyle}" />
+                </StackLayout>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

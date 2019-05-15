@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MedCon.CustomControls.HeaderView"
+             HeightRequest="60"
+             BackgroundColor="{StaticResource HeaderColor}">
+    <ContentView.Content>
+        <Grid Padding="5,15,5,15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="90*" />
+                <ColumnDefinition Width="10*" />
+            </Grid.ColumnDefinitions>
+            <Image x:Name="imgBack"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Source="Back.png"
+                   Aspect="AspectFit"
+                   HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label x:Name="headerTitle"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   HorizontalOptions="Center"
+                   TextColor="White"
+                   FontSize="Medium"
+                   VerticalOptions="Center"
+                   FontFamily="RobotoCondensed-Regular.ttf#RobotoCondensed-Regular" />           
+            <Image  Grid.Row="0"
+                    Grid.Column="2"
+                    Source="settings.png"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Start" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

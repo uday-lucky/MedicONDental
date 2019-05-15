@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:CustomPageTemplate xmlns="http://xamarin.com/schemas/2014/forms"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          xmlns:views="clr-namespace:MedCon.Views"
+                          xmlns:controls="clr-namespace:MedCon.CustomControls"
+                          xmlns:calendarControl="clr-namespace:XamForms.Controls;assembly=XamForms.Controls.Calendar"
+                          x:Class="MedCon.Views.DashboardCalendarPage"
+                          BackgroundColor="{StaticResource WhiteColor}" TitleText="Monthly">
+    <views:CustomPageTemplate.CustomDataTemplate>
+        <StackLayout Margin="0,-6,0,0"
+                     Spacing="10">
+            <StackLayout BackgroundColor="{StaticResource HeaderColor}">
+                <StackLayout Margin="20">
+                    <Label Text="{Binding SelectedDay}"
+                           Style="{StaticResource LabelStyle}"
+                           FontSize="Large"
+                           TextColor="{StaticResource WhiteColor}" />
+                    <Label Text="{Binding SelectedMonth}"
+                           Style="{StaticResource LabelStyle}"
+                           FontSize="Large"
+                           TextColor="{StaticResource WhiteColor}" />
+                </StackLayout>
+            </StackLayout>
+          <controls:DashboardCalendar Data="{Binding CalendarData}"></controls:DashboardCalendar>
+            <!--<calendarControl:Calendar Padding="10,0,10,0"
+                                      StartDay="Monday"                                      
+                                      SelectedBorderWidth="4"
+                                      DisabledBorderColor="Black"
+                                      DatesFontFamily="{StaticResource RobotoMedium}"
+                                      SelectedBackgroundColor="{StaticResource ControlsColor}"
+                                      SelectedBorderColor="{StaticResource ControlsColor}"
+                                      SpecialDates="{Binding MyDates}"
+                                      BorderColor="{StaticResource WhiteColor}"
+                                      BackgroundColor="{StaticResource WhiteColor}"
+                                      DatesFontSize="13"
+                                      TitleLeftArrowImage="calendar_left_arrow"
+                                      TitleRightArrowImage="calendar_right_arrow"
+                                      TitleRightArrowText=""
+                                      TitleLeftArrowText=""
+                                      SelectedFontSize="13"
+                                      SelectedFontFamily="{StaticResource RobotoMedium}"
+                                      SelectedTextColor="White"
+                                      DateCommand="{Binding DateSelectionCommand}"/>-->
+        </StackLayout>
+    </views:CustomPageTemplate.CustomDataTemplate>
+</views:CustomPageTemplate>

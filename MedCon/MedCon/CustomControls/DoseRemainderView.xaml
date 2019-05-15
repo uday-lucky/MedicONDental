@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MedCon.CustomControls.DoseRemainderView"
+             x:Name="doseView"
+             IsVisible="{Binding IsRemainderVisible}"
+             BackgroundColor="{Binding ViewColor}"
+             BindingContext="{Binding NextDose}">
+  <ContentView.Content>
+        <StackLayout VerticalOptions="End"
+                     Orientation="Horizontal">
+            <StackLayout WidthRequest="50"
+                         Padding="5" BackgroundColor="White">
+                <Image Source="{Binding MedicineImage}"
+                       Aspect="AspectFill" />
+            </StackLayout>
+            <Grid Padding="5" HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       Text="Next Dose Due"
+                       Style="{StaticResource LabelStyle}"
+                       FontSize="16"
+                       TextColor="White"
+                       HorizontalTextAlignment="Start" />
+                <Label Grid.Row="1"
+                       Grid.Column="0"
+                       Text="{Binding DoseName}"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="White"
+                       HorizontalTextAlignment="Start" />
+                <Label Grid.Row="0"
+                       Grid.Column="1"
+                       Text="{Binding DoseInTime}"
+                       Style="{StaticResource LabelStyle}"
+                       FontSize="16"
+                       TextColor="White"
+                       HorizontalTextAlignment="Start" />
+                <Label Grid.Row="1"
+                       Grid.Column="1"
+                       Text="{Binding Time}"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="White"
+                       HorizontalTextAlignment="Start" />
+                <Image Grid.Row="0"
+                       Grid.Column="2"
+                       HeightRequest="30"
+                       WidthRequest="30"
+                       Source="close">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

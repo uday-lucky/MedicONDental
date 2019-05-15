@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MedCon.Views.MedicationDetailsView" BackgroundColor="White">
+  <ContentView.Content>
+      <StackLayout x:Name="detailsView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Label HeightRequest="2"
+                   HorizontalOptions="FillAndExpand"
+                   BackgroundColor="#cccccc" />
+            <StackLayout Orientation="Horizontal"
+                         Margin="5,0,5,0">
+                <Label Text="Details"
+                       Style="{StaticResource LabelStyle}"
+                       FontSize="16"
+                       HorizontalOptions="StartAndExpand" />
+                <Image Source="downarrow1.png"
+                       HeightRequest="15"
+                       WidthRequest="15"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center" x:Name="imgDetails"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                    <!--<TapGestureRecognizer Command="{Binding DisplayDetailsCommand}" />-->
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+            <Grid x:Name="gridDetails" BackgroundColor="White"
+                  Margin="5"
+                  IsVisible="{Binding IsDetailsVisible}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="50*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       Text="Name"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="#b6b6b6" />
+                <Label Grid.Row="1"
+                       Grid.Column="0"
+                       Text="Medication Per Dose"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="#b6b6b6" />
+                <Label Grid.Row="2"
+                       Grid.Column="0"
+                       Text="Total Doses"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="#b6b6b6" />
+                <Label Grid.Row="3"
+                       Grid.Column="0"
+                       Text="Extra Doses"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="#b6b6b6" />
+                <Label Grid.Row="4"
+                       Grid.Column="0"
+                       Text="Duration Between Doses"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="#b6b6b6" />
+                <Label Grid.Row="5"
+                       Grid.Column="0"
+                       Text="Schedule Type"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="#b6b6b6" />
+                <Label Grid.Row="6"
+                       Grid.Column="0"
+                       Text="Daily Dosing Schedule"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="#b6b6b6" />
+                <Label Grid.Row="0"
+                       Grid.Column="1"
+                       Text="{Binding RegimenName}"
+                       Style="{StaticResource LabelStyle}" />
+                <Label Grid.Row="1"
+                       Grid.Column="1"
+                       Text="{Binding MedicationPerDose}"
+                       Style="{StaticResource LabelStyle}" />
+                <Label Grid.Row="2"
+                       Grid.Column="1"
+                       Text="{Binding TotalDoses}"
+                       Style="{StaticResource LabelStyle}" />
+                <Label Grid.Row="3"
+                       Grid.Column="1"
+                       Text="{Binding ExtraDoses}"
+                       Style="{StaticResource LabelStyle}" />
+                <Label Grid.Row="4"
+                       Grid.Column="1"
+                       Text="{Binding DurationBetweenDoses}"
+                       Style="{StaticResource LabelStyle}" />
+                <Label Grid.Row="5"
+                       Grid.Column="1"
+                       Text="{Binding ScheduleType}"
+                       Style="{StaticResource LabelStyle}" />
+                <Label Grid.Row="6"
+                       Grid.Column="1"
+                       Text="{Binding DailyDosingSchedule}"
+                       Style="{StaticResource LabelStyle}" />
+            </Grid>
+            <Grid x:Name="gridDetails1"
+                  BackgroundColor="White"
+                  Margin="5"
+                  IsVisible="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="50*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       Text="Name"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="#b6b6b6" />
+                <Label Grid.Row="1"
+                       Grid.Column="0"
+                       Text="Total Doses"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="#b6b6b6" />
+                <Label Grid.Row="2"
+                       Grid.Column="0"
+                       Text="Extra Doses"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="#b6b6b6" />
+                <Label Grid.Row="3"
+                       Grid.Column="0"
+                       Text="Duration Between Doses"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="#b6b6b6" />
+                <Label Grid.Row="0"
+                       Grid.Column="1"
+                       Text="{Binding RegimenName}"
+                       Style="{StaticResource LabelStyle}" />
+                <Label Grid.Row="1"
+                       Grid.Column="1"
+                       Text="{Binding TotalDoses}"
+                       Style="{StaticResource LabelStyle}" />
+                <Label Grid.Row="2"
+                       Grid.Column="1"
+                       Text="{Binding ExtraDoses}"
+                       Style="{StaticResource LabelStyle}" />
+                <Label Grid.Row="3"
+                       Grid.Column="1"
+                       Text="{Binding DurationBetweenDoses}"
+                       Style="{StaticResource LabelStyle}" />
+            </Grid>
+            <Label HeightRequest="1"
+                   HorizontalOptions="FillAndExpand"
+                   BackgroundColor="#cccccc" />
+            <StackLayout Orientation="Horizontal"
+                         Margin="5,0,5,0">
+                <Label Text="Dose Adherence Info"
+                       Style="{StaticResource LabelStyle}"
+                       FontSize="16"
+                       HorizontalOptions="StartAndExpand" />
+                <Image Source="downarrow1.png"
+                       HeightRequest="15"
+                       WidthRequest="15"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center" x:Name="imgAdherence" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
+                    <!--<TapGestureRecognizer Command="{Binding DisplayAdherenceCommand}" />-->
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+            <StackLayout x:Name="stackAdherence" Spacing="1"
+                         Margin="5,0,0,5"
+                         WidthRequest="200"
+                         BackgroundColor="#cccccc"
+                         HorizontalOptions="StartAndExpand"
+                         IsVisible="False">
+                <Grid ColumnSpacing="2"
+                      RowSpacing="0.5"
+                      BackgroundColor="#ecece"
+                      WidthRequest="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#58bcf5"
+                           TextColor="White"
+                           Text="Type"
+                           HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0"
+                           Grid.Column="1"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#58bcf5"
+                           TextColor="White"
+                           Text="Normal"
+                           HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0"
+                           Grid.Column="2"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#58bcf5"
+                           TextColor="White"
+                           Text="Extra"
+                           HorizontalTextAlignment="Center" />
+                </Grid>
+                <Grid ColumnSpacing="2"
+                      RowSpacing="0.5"
+                      BackgroundColor="#cccccc"
+                      WidthRequest="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#ffffff"
+                           Text="On-Time"
+                           HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0"
+                           Grid.Column="1"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#ffffff"
+                           Text="{Binding OntimeNormal}"
+                           HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0"
+                           Grid.Column="2"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#ffffff"
+                           Text="{Binding OntimeExtra}"
+                           HorizontalTextAlignment="Center" />
+                </Grid>
+                <Grid ColumnSpacing="2"
+                      RowSpacing="0.5"
+                      BackgroundColor="#cccccc"
+                      WidthRequest="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#f5f5f5"
+                           Text="Overdose"
+                           HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0"
+                           Grid.Column="1"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#f5f5f5"
+                           Text="{Binding OverdoseNormal}"
+                           HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0"
+                           Grid.Column="2"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#f5f5f5"
+                           Text="{Binding OverdoseExtra}"
+                           HorizontalTextAlignment="Center" />
+                </Grid>
+                <Grid ColumnSpacing="2"
+                      RowSpacing="0.5"
+                      BackgroundColor="#cccccc"
+                      WidthRequest="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#ffffff"
+                           Text="Missed"
+                           HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0"
+                           Grid.Column="1"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#ffffff"
+                           Text="{Binding MissedNormal}"
+                           HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0"
+                           Grid.Column="2"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#ffffff"
+                           Text="{Binding MissedExtra}"
+                           HorizontalTextAlignment="Center" />
+                </Grid>
+                <Grid ColumnSpacing="2"
+                      RowSpacing="0.5"
+                      BackgroundColor="#cccccc"
+                      WidthRequest="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#f5f5f5"
+                           Text="Late"
+                           HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0"
+                           Grid.Column="1"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#f5f5f5"
+                           Text="{Binding LateNormal}"
+                           HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0"
+                           Grid.Column="2"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#f5f5f5"
+                           Text="{Binding LateExtra}"
+                           HorizontalTextAlignment="Center" />
+                </Grid>
+            </StackLayout>
+            <Label HeightRequest="1"
+                   HorizontalOptions="FillAndExpand"
+                   BackgroundColor="#cccccc" />
+            <StackLayout Orientation="Horizontal"
+                         Margin="5,0,5,10">
+                <Label Text="Remaining Medication Info"
+                       Style="{StaticResource LabelStyle}"
+                       FontSize="16"
+                       HorizontalOptions="StartAndExpand" />
+                <Image Source="downarrow1.png"
+                       HeightRequest="15"
+                       WidthRequest="15"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center" 
+                       x:Name="imgRemaning"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2" />
+                    <!--<TapGestureRecognizer Command="{Binding DisplayRemainingCommand}" />-->
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+            <StackLayout x:Name="stackRemaining"
+                         IsVisible="False"
+                         Margin="5,0,0,15"
+                         WidthRequest="200"
+                         BackgroundColor="#cccccc"
+                         HorizontalOptions="StartAndExpand" Spacing="1">
+                <Grid ColumnSpacing="2"
+                      RowSpacing="0.5"
+                      BackgroundColor="#cccccc"
+                      WidthRequest="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130" />
+                        <ColumnDefinition Width="70" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#58bcf5"
+                           TextColor="White"
+                           Text="Description"
+                           HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0"
+                           Grid.Column="1"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#58bcf5"
+                           TextColor="White"
+                           Text="Count"
+                           HorizontalTextAlignment="Center" />
+                </Grid>
+                <Grid ColumnSpacing="2"
+                      RowSpacing="0.5"
+                      BackgroundColor="#cccccc"
+                      WidthRequest="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130" />
+                        <ColumnDefinition Width="70" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#ffffff"
+                           Text="Doses"
+                           HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0"
+                           Grid.Column="1"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#ffffff"
+                           Text="{Binding Doses}"
+                           HorizontalTextAlignment="Center" />
+                </Grid>
+                <Grid ColumnSpacing="2"
+                      RowSpacing="0.5"
+                      BackgroundColor="#cccccc"
+                      WidthRequest="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130" />
+                        <ColumnDefinition Width="70" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#f5f5f5"
+                           Text="Medication"
+                           HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0"
+                           Grid.Column="1"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#f5f5f5"
+                           Text="{Binding Medications}"
+                           HorizontalTextAlignment="Center" />
+                </Grid>
+                <!--<Grid ColumnSpacing="2"
+                      RowSpacing="0.5"
+                      BackgroundColor="#cccccc"
+                      WidthRequest="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130" />
+                        <ColumnDefinition Width="70" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#ffffff"
+                           Text="Extra Doses"
+                           HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0"
+                           Grid.Column="1"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#ffffff"
+                           Text="{Binding Doses}"
+                           HorizontalTextAlignment="Center" />
+                </Grid>
+                <Grid ColumnSpacing="2"
+                      RowSpacing="0.5"
+                      BackgroundColor="#cccccc"
+                      WidthRequest="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130" />
+                        <ColumnDefinition Width="70" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#f5f5f5"
+                           Text="Extra Medication"
+                           HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0"
+                           Grid.Column="1"
+                           Style="{StaticResource LabelStyle}"
+                           BackgroundColor="#f5f5f5"
+                           Text="{Binding Doses}"
+                           HorizontalTextAlignment="Center" />
+                </Grid>-->
+            </StackLayout>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

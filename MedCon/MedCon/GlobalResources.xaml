@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:controls="clr-namespace:MedCon.CustomControls"
+                    x:Class="MedCon.GlobalResources">
+        <Color x:Key="HeaderColor">
+            #5C6BC0
+        </Color>
+        <Color x:Key="ControlsColor">
+            #1b2e68
+        </Color>
+        <Color x:Key="WhiteColor">
+            #ffffff
+        </Color>
+        <Color x:Key="BlackColor">
+            #000000
+        </Color>
+        <Color x:Key="PageColor">
+            #e8ebf6
+        </Color>
+        <Color x:Key="MorningColor">
+            #ffeb3b
+        </Color>
+        <Color x:Key="AfternoonColor">
+            #03a9f4
+        </Color>
+        <Color x:Key="EveningColor">
+            #ff9800
+        </Color>
+        <Color x:Key="BedtimeColor">
+            #0277bd
+        </Color>
+        <!--Fonts-->
+        <OnPlatform x:Key="RobotoMedium"
+                    x:TypeArguments="x:String"
+                    iOS="Roboto-Medium"
+                    Android="Roboto-Medium.ttf#Roboto-Medium" />
+        <OnPlatform x:Key="RobotoLightItalic"
+                    x:TypeArguments="x:String"
+                    iOS="RobotoCondensed-LightItalic"
+                    Android="RobotoCondensed-LightItalic.ttf#RobotoCondensed-LightItalic" />
+        <OnPlatform x:Key="RobotoBold"
+                    x:TypeArguments="x:String"
+                    iOS="Roboto-Bold"
+                    Android="Roboto-Bold.ttf#Roboto-Bold" />
+
+        <OnPlatform x:Key="LargerSize"
+                    x:TypeArguments="x:Double"
+                    iOS="18"
+                    Android="20" />
+        <OnPlatform x:Key="HeaderHeight"
+                    x:TypeArguments="x:Double"
+                    iOS="30"
+                    Android="30" />
+    <OnPlatform x:Key="MicroFont"
+                x:TypeArguments="x:Double"
+                Android="10"
+                iOS="9" />
+    <OnPlatform x:Key="SmallFont"
+                x:TypeArguments="x:Double"
+                Android="13"
+                iOS="11" />
+    <OnPlatform x:Key="MediumFont"
+                x:TypeArguments="x:Double"
+                Android="16"
+                iOS="13" />
+    <OnPlatform x:Key="LargeFont"
+                x:TypeArguments="x:Double"
+                Android="25"
+                iOS="20" />
+    <OnPlatform x:Key="HeadeFont"
+                x:TypeArguments="x:Double"
+                Android="20"
+                iOS="18" />
+
+    <Style x:Key="FrameStyle"
+               TargetType="Frame">
+            <Setter Property="Padding"
+                    Value="10,2,10,2" />
+            <Setter Property="CornerRadius"
+                    Value="4" />
+            <Setter Property="HasShadow"
+                    Value="False" />
+        </Style>
+        <Style x:Key="EntryStyle"
+               TargetType="Entry">
+            <Setter Property="FontSize"
+                    Value="14" />
+            <Setter Property="HeightRequest">
+                <OnPlatform x:TypeArguments="x:Double"
+                            iOS="40"
+                            Android="40" />
+            </Setter>
+            <Setter Property="FontSize"
+                Value="{StaticResource MediumFont}" />
+            <Setter Property="PlaceholderColor"
+                    Value="{StaticResource BlackColor}" />
+            <Setter Property="FontFamily"
+                    Value="RobotoCondensed-Regular.ttf#RobotoCondensed-Regular" />
+        </Style>
+        <Style x:Key="LabelStyle"
+               TargetType="Label">
+            <Setter Property="FontSize"
+                Value="{StaticResource MediumFont}" />
+            <Setter Property="TextColor"
+                    Value="Black" />
+            <Setter Property="VerticalTextAlignment"
+                    Value="Center" />
+            <Setter Property="HorizontalTextAlignment"
+                    Value="Start" />
+            <Setter Property="FontFamily"
+                    Value="RobotoCondensed-Regular.ttf#RobotoCondensed-Regular" />
+        </Style>
+        <Style x:Key="ButtonStyle"
+               TargetType="Label">
+            <Setter Property="FontSize"
+                Value="{StaticResource MediumFont}" />
+            <Setter Property="BackgroundColor"
+                    Value="#2ab999" />
+            <Setter Property="TextColor"
+                    Value="White" />
+            <Setter Property="FontFamily"
+                    Value="RobotoCondensed-Regular.ttf#RobotoCondensed-Regular" />
+        </Style>
+        <Style TargetType="controls:CustomView">
+            <Setter Property="CornerRadius">
+                <OnPlatform x:TypeArguments="x:Double"
+                            Android="15"
+                            iOS="5" />
+            </Setter>
+        </Style>
+
+</ResourceDictionary>

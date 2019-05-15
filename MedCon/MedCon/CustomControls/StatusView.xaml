@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MedCon.CustomControls.StatusView" x:Name="Control">
+    <ContentView.Content>
+        <RelativeLayout>
+            <StackLayout x:Name="stackMedicine" BackgroundColor="Silver"                        
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Constant=5}"
+                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=0.10, Constant=0}">
+                <StackLayout Margin="2" BackgroundColor="White">
+                    <Image x:Name="imgMedicine"
+                           Margin="5"
+                           HeightRequest="30"
+                           WidthRequest="30"
+                           Source="{Binding medicine_image}">
+                        
+                    </Image>
+                </StackLayout>
+            </StackLayout>
+            <!--<Image Source="capsule.png"
+                   WidthRequest="54"
+                   HeightRequest="54"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Constant=5}"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=0.10, Constant=0}" />-->
+            <Image x:Name="imgStatus"
+                   Source="{Binding StatusIconSource, Source={x:Reference Control}}"
+                   HeightRequest="25"
+                   WidthRequest="25"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Constant=27}"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=0.10, Constant=25}"/>
+        </RelativeLayout>
+        <!--<Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15*" />
+                <RowDefinition Height="70*" />
+                <RowDefinition Height="15*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*" />
+                <ColumnDefinition Width="70*" />
+                <ColumnDefinition Width="15*" />
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Grid.RowSpan="3"
+                   Source="capsule.png" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Image Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Grid.RowSpan="3"
+                   Source="ontime.png"
+                   VerticalOptions="End"
+                   HorizontalOptions="End"/>
+
+        </Grid>-->
+    </ContentView.Content>
+</ContentView>
